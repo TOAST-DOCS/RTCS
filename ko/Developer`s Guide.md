@@ -109,7 +109,7 @@ RTCS에 접속하기 위한 접속 권한을 요청한다. 제공 받은 URL을 
 [URL]
 
 ```
-POST /v2/auth/{app}/access
+POST /v2/auth/{appkey}/access
 ```
 
 [payload]
@@ -129,7 +129,7 @@ POST /v2/auth/{app}/access
 
 |이름|자료형|설명|
 |---|---|---|
-|app|String|토스트 클라우드의 Appkey|
+|appkey|String|토스트 클라우드의 Appkey|
 
 [payload]
 
