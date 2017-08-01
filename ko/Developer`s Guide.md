@@ -104,6 +104,64 @@ RTCS에서 제공하는 Restfull API에 대한 설명이다. API종류는 접속
 |https://api-gw.cloud.toast.com/tc-pusher/|
 
 ### 접속 권한 요청
+RTCS에 접속하기 위한 접속 권한을 요청한다. 제공 받은 URL을 이용하여 클라이언트에서 접속하면된다.
+
+[URL]
+
+```
+POST /v2/auth/{app}/access
+```
+
+[payload]
+
+```
+{
+   "user":"{user_data}",
+   "channels":[
+      "channel_name",
+      "channel_name",
+      "channel_name"
+   ],
+   "via":"{via}"
+}
+```
+[parammeter]
+
+|이름|자료형|설명|
+|---|---|---|
+|app|String|토스트 클라우드의 Appkey|
+
+[payload]
+
+|이름|자료형|설명|
+|---|---|---|
+|user|String|사용자 식별을 위한 정보(문자열)를 입력한다. 최대 값은 200byte 이다.|
+|channels|Array|가입이 허가된 채널명들을 입력한다. 3개까지 입력 가능하며, 채널명의 최대 값은 200byte 이다.채널 중에 인증이 필요한 채널에 대해서만 필요하다|
+|via|String|클라이언트 타입을 구분하기 위한 식별자. 기본값은 browser|
+
+[response]
+```
+{
+   "url":"ttps://pub001-pusher.toast.com/socket.io/1/?app={appkey}&ts=1501588191&s=389ab4e5d444a9ce48d2edb05021747fada29df4&d=Og&t=1501588191521",
+   "app":"appkey"
+}
+```
+|이름|자료형|설명|
+|---|---|---|
+|url|String|클라이언트 접속 URL|
+|appkey|String|토스트 클라우드의 Appkey|
+
+[Http status code]
+
+|code| 구분 | 코드명 | 설명 |
+|---|---|---|---|
+|200| 성공 |ACCEPTED | 요청이 정상적으로 수행된 경우 발생한다.|
+|400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
+|401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
+|413| 에러 |Request Entity Too Large | 메시지 크기가 지정된 크기보다 더 큰 경우 발생한다.|
+|500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+
+
 
 ### 채널 메시지 전달 요청
 
