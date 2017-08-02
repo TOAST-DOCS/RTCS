@@ -62,10 +62,7 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
 
 ### 클라이언트 접속
 클라이언트가 접속 했을 때 Hook이 발생한다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. `user` 데이터는 접속 URL을 요청했을 때 전달해준 서비스 서버의 user 데이터이다.
-* type : `connect`
-* app : 토스트 클라우드의 `appkey`
-* session : RTCS에서 사용하는 클라이언트 단위의 ID
-* hook data
+
 ```
 {
     "time" : "milliseconds",
@@ -82,6 +79,7 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
 
 |이름|자료형|설명|
 |---|---|---|
+|type|String|Hook 이벤트 타입|
 |app|String|토스트 클라우드의 `appkey`|
 |user|String|접근 요청 할때 전달된 사용자 정보|
 |session|String|접속한 클라이언트의 Session ID|
@@ -104,6 +102,7 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
 
 |이름|자료형|설명|
 |---|---|---|
+|type|String|Hook 이벤트 타입|
 |app|String|토스트 클라우드의 `appkey`|
 |user|String|접근 요청 할때 전달된 사용자 정보|
 |session|String|접속한 클라이언트의 Session ID|
@@ -119,7 +118,7 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
     "user" : "{user}",
     "session" : "{session}",
     "detail" : {
-       "channel" : "channel_name"
+       "channel" : "{channel_name}"
      }
 }
 ```
@@ -127,9 +126,11 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
 
 |이름|자료형|설명|
 |---|---|---|
+|type|String|Hook 이벤트 타입|
 |app|String|토스트 클라우드의 `appkey`|
 |user|String|접근 요청 할때 전달된 사용자 정보|
 |session|String|접속한 클라이언트의 Session ID|
+|channel_name|String|가입 한 채널명|
 
 ### 채널 탈퇴
 클라이언트에서 채널을 탈퇴했을 때 Hook이 발생된다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. `user`키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터이다.
@@ -141,7 +142,7 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
     "user" : "{user}",
     "session" : "{session}",
     "detail" : {
-       "channel" : "channel_name"
+       "channel" : "{channel_name}"
      }
 }
 ```
@@ -149,12 +150,14 @@ WebAuth는 서비스 서버에 http `POST`요청으로 전달되며 Body는 json
 
 |이름|자료형|설명|
 |---|---|---|
+|type|String|Hook 이벤트 타입|
 |app|String|토스트 클라우드의 `appkey`|
 |user|String|접근 요청 할때 전달된 사용자 정보|
 |session|String|접속한 클라이언트의 Session ID|
+|channel_name|String|가입 탈퇴 채널명|
 
 ## Service API  
-RTCS에서 제공하는 Restfull API에 대한 설명이다. API종류는 접속 권한 요청, 채널 메시지 전달 요청, 채널 존재 여부 확인 등의 기능을 제공한다. 기본 API URL은 아래와 같다.
+RTCS에서 제공하는 Rest API에 대한 설명이다. API종류는 접속 권한 요청, 채널 메시지 전달 요청, 채널 존재 여부 확인 등의 기능을 제공한다. 기본 API URL은 아래와 같다.
 
 |기본 도메인|
 |---|
