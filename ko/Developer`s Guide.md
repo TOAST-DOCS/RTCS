@@ -36,16 +36,16 @@ RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명한�
 클라이언트에서 밣생하는 이벤트를 서비스 서버로 전달할때 사용한다. Http의 post로 요청이 전달되고 body는 Json형태 이다. Hook은 기본 시간 동안(`1000ms`) 전송 시도 후 성공/실패에 상관없이 완료되며, 실패 하더라도 재전송 되지 않는다.
 
 ### 클라이언트 접속
-클라이언트가 접속 했을 때 Hook이 발생한다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. `user`키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터이다.
+클라이언트가 접속 했을 때 Hook이 발생한다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. `user` 데이터는 접속 URL을 요청했을 때 전달해준 서비스 서버의 user 데이터이다.
 * type : `connect`
-* app : 토스트 클라우드의 `AppID`
+* app : 토스트 클라우드의 `appkey`
 * session : RTCS에서 사용하는 클라이언트 단위의 ID
 * hook data
 ```
 {
     "time" : "milliseconds",
     "type" : "connect",
-    "app" : "app_id",
+    "app" : "{appkey}",
     "user" : "user_id",
     "session" : "session_id",
     "detail" : {
@@ -60,7 +60,7 @@ RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명한�
 {
     "time" : "milliseconds",
     "type" : "connect",
-    "app" : "app_id",
+    "app" : "{appkey}",
     "user" : "user_id",
     "session" : "session_id",
     "detail" : {
@@ -74,7 +74,7 @@ RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명한�
 {
     "time":"1352770998419",
     "type":"subscribe",
-    "app":"app_id",
+    "app":"{appkey}",
     "user":"user_id",
     "session":"session_id",
     "detail":{
@@ -88,7 +88,7 @@ RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명한�
 {
     "time":"1352770998419",
     "type":"unsubscribe",
-    "app":"app_id",
+    "app":"{appkey}",
     "user":"user_id",
     "session":"session_id",
     "detail":{
@@ -162,11 +162,174 @@ POST /v2/auth/{appkey}/access
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
 
 
-
 ### 채널 메시지 전달 요청
+채널에 가입된 클라이언트 들에게 메세지를 전달한다.
+* 주의)
+  * 메세지의 크기는 `1mb`보다 작아야한다.
+  * 큰메세지를 보낼 경우 `413`에러가 발생한다.
+* 메세지 크기만 잘 조절하면 base64를 이용해 바이너리도 전달 가능  
+
+[URL]
+
+```
+POST /v2/event/{appkey}/channel
+```
+
+[payload]
+
+```
+{
+   "channels":[
+      "channel_name"
+   ],
+   "event":"{event_name}",
+   "data":{
+      "user":"aa",
+      "message":"hahahah"
+   }
+}
+```
+[parammeter]
+
+|이름|자료형|설명|
+|---|---|---|
+|appkey|String|토스트 클라우드의 Appkey|
+
+[payload]
+
+|이름|자료형|설명|
+|---|---|---|
+|channels|Array|메시지를 전달할 채널명을 입력한다. 한꺼번에 전달할 수 있는 채널의 개수는 100개로 제한된다.|
+|event|String|메세지를 받을 이벤트명|
+|data|String or object|전달할 메세지 string 이나 json 모두 지원, 하지만 json도 string으로 전달하는게 안전하다.|
+
+[response]
+```
+
+{"accepted":"{server_id}", "app":"{appkey}"}
+```
+
+|이름|자료형|설명|
+|---|---|---|
+|accepted|String|서버 아이디|
+|app|String|토스트 클라우드의 Appkey|
+
+[Http status code]
+
+|code| 구분 | 코드명 | 설명 |
+|---|---|---|---|
+|200| 성공 |ACCEPTED | 요청이 정상적으로 수행된 경우 발생한다.|
+|400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
+|401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
+|413| 에러 |Request Entity Too Large | 메시지 크기가 지정된 크기보다 더 큰 경우 발생한다.|
+|500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
 
 ### 채널 존재 여부 확인
+채널이 존재 하는지 확인 한다.
+
+[URL]
+
+```
+GET /exists/{appkey}
+```
+
+[parammeter]
+
+|이름|자료형|설명|
+|---|---|---|
+|appkey|String|토스트 클라우드의 Appkey|
+
+
+[response]
+```
+{"occupied": Boolean}
+```
+
+|이름|자료형|설명|
+|---|---|---|
+|occupied|Boolean|채널 존대 여부|
+
+[Http status code]
+
+|code| 구분 | 코드명 | 설명 |
+|---|---|---|---|
+|200| 성공 |ACCEPTED | 요청이 정상적으로 수행된 경우 발생한다.|
+|400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
+|401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
+|500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
 
 ### 채널에 가입된 세션 정보 조회
+채널에 가입된 세션의 목록을 조회한다. 조회가 가능한 채널은 `presence`와 `member` 채널이다.
+
+[URL]
+
+```
+GET /v2/channel/{appkey}/sessions?channel={channel_name}
+```
+
+[parammeter]
+
+|이름|자료형|설명|
+|---|---|---|
+|appkey|String|토스트 클라우드의 Appkey|
+|channel|String|조회할 채널명을 입력한다. 한 번에 하나만 가능하다.|
+
+
+[response]
+요청이 성공하면 "세션아이디"/"사용자"가 key/value로 저장된 결과가 전달된다.
+
+```
+{
+    "{sessionId_1}": "{user_1}",
+    "{sessionId_2}": "{user_2}"
+}
+```
+
+|이름|자료형|설명|
+|---|---|---|
+|sessionId|String|RTCS 세션 아이디|
+|user|String|서비스서버에서 전달해준 User 정보|
+
+[Http status code]
+
+|code| 구분 | 코드명 | 설명 |
+|---|---|---|---|
+|200| 성공 |ACCEPTED | 요청이 정상적으로 수행된 경우 발생한다.|
+|400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
+|401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
+|500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
 
 ### 채널에 가입된 세션 개수 조회
+채널에 가입된 세션의 갯수를 조회한다. 조회가 가능한 채널은 `presence`와 `member` 채널이다.
+
+[URL]
+
+```
+GET /v2/channel/{appkey}/count?channel={channel_name}
+```
+
+[parammeter]
+
+|이름|자료형|설명|
+|---|---|---|
+|appkey|String|토스트 클라우드의 Appkey|
+|channel|String|조회할 채널명을 입력한다. 한 번에 하나만 가능하다.|
+
+
+[response]
+```
+{"count":Number}
+```
+
+|이름|자료형|설명|
+|---|---|---|
+|count|Number|채널에 가입된 세션 숫자|
+
+[Http status code]
+
+|code| 구분 | 코드명 | 설명 |
+|---|---|---|---|
+|200| 성공 |ACCEPTED | 요청이 정상적으로 수행된 경우 발생한다.|
+|400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
+|401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
+|500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
