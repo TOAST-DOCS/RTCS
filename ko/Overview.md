@@ -1,5 +1,5 @@
 ## Upcoming Products > RTCS > Overview
-RTCS는 쉽고 빠르게 Web, 모바일 앱, 데스크탑 어플리케이션과 같은 다양한 디바이스를 실시간 으로 연결시켜주고 메세지를 주고 받을 수 있게 해주는 서비스이다. RTCS를 이용해서 실시간 협업툴, 멀티플레이어 게임, 채팅, 리얼타임 대시보드와 같은 기능을 다양한 디바이스에서 쉽게 구현 가능하다.
+RTCS는 쉽고 빠르게 Web, 모바일 앱, 데스크탑 어플리케이션과 같은 다양한 디바이스를 실시간으로 연결시켜주고 메세지를 주고 받을 수 있게 해주는 서비스이다. RTCS를 이용해서 실시간 협업툴, 멀티플레이어 게임, 채팅, 리얼타임 대시보드와 같은 기능을 다양한 디바이스에서 쉽게 구현 가능하다. Socket.io 0.9, 1.x기반의 플랫폼 서비스이다.
 
 ## 주요기능
 ### 실시간 메세지 전송
@@ -23,8 +23,14 @@ RTCS가 메세지를 broadcast하는 단위는 채널이다. 메세지 전달 �
 RTCS를 통해 접속한 사용자, 메세지의 양 등의 통계자료를 지표로 제공한다. 또 현재 접속중인 사용자의 수도 실시간으로 제공한다.
 
 ## 클라이언트 지원
-* Javascript (socket.io 0.9 : https://cdnjs.com/libraries/socket.io/0.9.17)
+클라이언트는 Javascript는 socket.io 0.9 기반, 나머지 native client들은 아래 socket.io 1.x버젼용 client library를 사용하면된다.
+
+### client libraries
+* Javascript
+  * socket.io 0.9
+  * [https://cdnjs.com/libraries/socket.io/0.9.17](https://cdnjs.com/libraries/socket.io/0.9.17)
 * Java
+  * socket.io 1.x
   * maven
   ```
   <dependencies>
@@ -42,6 +48,14 @@ RTCS를 통해 접속한 사용자, 메세지의 양 등의 통계자료를 지�
     exclude group: 'org.json', module: 'json'
   }
   ```
-* Swift https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1
-* Cpp https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1
-* Unity3D https://github.com/nhnent/socket.io-client-unity3d
+* Swift
+  * socket.io 1.x
+  * [https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1](https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1)
+
+* Cpp
+  * socket.io 1.x
+  * [https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1](https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1)
+
+* Unity3D
+  * socket.io 1.x
+  * [https://github.com/nhnent/socket.io-client-unity3d](https://github.com/nhnent/socket.io-client-unity3d)
