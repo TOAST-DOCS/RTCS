@@ -1,8 +1,8 @@
 ## Upcoming Products > RTCS > Getting Started
 ## 서비스 신청 방법
-![enable](http://static.toastoven.net/prod_rtcs/main.png)
 * 서비스 활성 버튼을 클릭하면 위와 같은 화면이 나온다.
 * 서비스 활성화 한뒤 Setting 화면에서 프로젝트를 설정한다.
+![enable](http://static.toastoven.net/prod_rtcs/main.png)
 
 ## 서비스 설정
 ![setting](http://static.toastoven.net/prod_rtcs/setting.png)

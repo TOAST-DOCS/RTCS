@@ -23,8 +23,25 @@ RTCS가 메세지를 broadcast하는 단위는 채널이다. 메세지 전달 �
 RTCS를 통해 접속한 사용자, 메세지의 양 등의 통계자료를 지표로 제공한다. 또 현재 접속중인 사용자의 수도 실시간으로 제공한다.
 
 ## 클라이언트 지원
-* Javascript
+* Javascript (socket.io 0.9 : https://cdnjs.com/libraries/socket.io/0.9.17)
 * Java
-* Swift
-* Cpp
-* Unity3D
+  * maven
+  ```
+  <dependencies>
+    <dependency>
+      <groupId>io.socket</groupId>
+      <artifactId>socket.io-client</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
+  ```
+  * Gradle
+  ```
+  compile ('io.socket:socket.io-client:1.0.0') {
+    // excluding org.json which is provided by Android
+    exclude group: 'org.json', module: 'json'
+  }
+  ```
+* Swift https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1
+* Cpp https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1
+* Unity3D https://github.com/nhnent/socket.io-client-unity3d
