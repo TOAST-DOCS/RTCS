@@ -26,12 +26,12 @@ RTCS를 통해 접속한 사용자, 메세지의 양 등의 통계자료를 지�
 클라이언트는 Javascript는 socket.io 0.9 기반, 나머지 native client들은 아래 socket.io 1.x버젼용 client library를 사용하면된다.
 
 ### client libraries
-* Javascript
-  * socket.io 0.9
-  * [https://cdnjs.com/libraries/socket.io/0.9.17](https://cdnjs.com/libraries/socket.io/0.9.17)
-* Java
-  * socket.io 1.x
-  * maven
+- Javascript
+  - socket.io 0.9
+  - [https://cdnjs.com/libraries/socket.io/0.9.17](https://cdnjs.com/libraries/socket.io/0.9.17)
+- Java
+  - socket.io 1.x
+  - maven
   ```
   <dependencies>
     <dependency>
@@ -41,21 +41,21 @@ RTCS를 통해 접속한 사용자, 메세지의 양 등의 통계자료를 지�
     </dependency>
   </dependencies>
   ```
-  * Gradle
+  - Gradle
   ```
   compile ('io.socket:socket.io-client:1.0.0') {
     // excluding org.json which is provided by Android
     exclude group: 'org.json', module: 'json'
   }
   ```
-* Swift
-  * socket.io 1.x
-  * [https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1](https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1)
+- Swift
+  - socket.io 1.x
+  - [https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1](https://github.com/socketio/socket.io-client-swift/releases/tag/v9.0.1)
 
-* Cpp
-  * socket.io 1.x
-  * [https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1](https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1)
+- Cpp
+  - socket.io 1.x
+  - [https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1](https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1)
 
-* Unity3D
-  * socket.io 1.x
-  * [https://github.com/nhnent/socket.io-client-unity3d](https://github.com/nhnent/socket.io-client-unity3d)
+- Unity3D
+  - socket.io 1.x
+  - [https://github.com/nhnent/socket.io-client-unity3d](https://github.com/nhnent/socket.io-client-unity3d)
