@@ -1,9 +1,9 @@
 ## Upcoming Products > RTCS > Getting Started
 ## 서비스 신청 방법
-![](http://static.toastoven.net/prod_rtcs/main.jsp)
+![](http://static.toastoven.net/prod_rtcs/main.jpg)
 
 ## 서비스 설정
-![](http://static.toastoven.net/prod_rtcs/setting.jsp)
+![](http://static.toastoven.net/prod_rtcs/setting.jpg)
 ### 서비스 신청 필요한 자료
 * SSL 사용 여부 : https, wss 를 사용해야할 때 체크
 * WebAuth URL : 서비스에서 연결 인증을 하기 위한 URL http, https
