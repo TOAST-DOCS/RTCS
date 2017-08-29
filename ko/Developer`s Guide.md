@@ -392,3 +392,108 @@ GET /v2/channel/{appkey}/count?channel={channel_name}
 |400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
 |401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+
+## Client
+
+클라이언트는 Javascript는 socket.io 0.9 기반, 나머지 native client들은 아래 socket.io 1.x버젼용 client library를 사용하면된다.
+
+
+### Javascript
+  - socket.io 0.9
+  - [https://cdnjs.com/libraries/socket.io/0.9.17](https://cdnjs.com/libraries/socket.io/0.9.17)
+
+### Java
+  - socket.io 1.x
+
+#### Maven
+  ```
+  <dependencies>
+    <dependency>
+      <groupId>io.socket</groupId>
+      <artifactId>socket.io-client</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
+  ```
+
+#### Gradle
+  ```
+  compile ('io.socket:socket.io-client:1.0.0') {
+    // excluding org.json which is provided by Android
+    exclude group: 'org.json', module: 'json'
+  }
+  ```
+### Swift or Objective-C
+  - socket.io 1.x
+  - [https://github.com/socketio/socket.io-client-swift](ÂΩ)
+
+#### Swift Package Manager
+**Package.swift** 에 아래 디펜던시를 추가한다
+```
+import PackageDescription
+
+let package = Package(
+    name: "YourSocketIOProject",
+    dependencies: [
+        .Package(url: "https://github.com/socketio/socket.io-client-swift", majorVersion: 11)
+    ]
+)
+```
+
+### Carthage
+**Cartfile** 에 아래와 같이 추가한다.
+```
+github "nuclearace/Starscream" ~> 8.0.4
+github "socketio/socket.io-client-swift" ~> 11.1.1 # Or latest version
+```
+Run
+```
+carthage update --platform ios,macosx
+```
+
+#### CocoaPods 1.0.0 or later  
+  - Cocoapod
+  - [https://cocoapods.org/pods/Socket.IO-Client-Swift](https://cocoapods.org/pods/Socket.IO-Client-Swift)
+
+프로젝트에서 **Podfile** 파일을 생성하고 **Socket.IO-Client-Swift** 를 추가한다.
+```
+  use_frameworks!
+
+  target 'YourApp' do
+      pod 'Socket.IO-Client-Swift', '~> 11.1.1' # Or latest version
+  end
+```
+
+  Install pods:
+```
+  $ pod install
+```  
+  Import the module:
+
+  Swift:
+```
+  import SocketIO
+```
+
+  Objective-C:
+```
+  @import SocketIO;
+```  
+
+#### CocoaSeeds
+Add this line to your Seedfile:
+````
+github "socketio/socket.io-client-swift", "v11.1.1", :files => "Source/*.swift" # Or latest version
+````
+Run
+```
+seed install.
+```
+
+### Cpp
+  - socket.io 1.x
+  - [https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1](https://github.com/socketio/socket.io-client-cpp/releases/tag/1.6.1)
+
+### Unity3D
+  - socket.io 1.x
+  - [https://github.com/nhnent/socket.io-client-unity3d](https://github.com/nhnent/socket.io-client-unity3d)

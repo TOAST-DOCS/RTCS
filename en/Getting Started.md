@@ -6,7 +6,7 @@
 
 ## 서비스 설정
 ![setting](http://static.toastoven.net/prod_rtcs/setting.png)
-### 서비스 신청 필요한 자료
+### 서비스 설정에 필요한 자료
 - SSL 사용 여부 : https, wss 를 사용해야할 때 체크
 - WebAuth URL : 서비스에서 연결 인증을 하기 위한 URL http, https
 - Hook URL : 아래 이벤트에 대한 hook을 받고 싶을 때 체크
