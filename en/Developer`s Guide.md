@@ -406,23 +406,26 @@ GET /v2/channel/{appkey}/count?channel={channel_name}
   - socket.io 1.x
 
 #### Maven
-  ```
-  <dependencies>
-    <dependency>
-      <groupId>io.socket</groupId>
-      <artifactId>socket.io-client</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-  </dependencies>
-  ```
+**pom.xml** 에 아래와 같이 추가한다.
+```
+<dependencies>
+  <dependency>
+    <groupId>io.socket</groupId>
+    <artifactId>socket.io-client</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+</dependencies>
+```
 
 #### Gradle
-  ```
-  compile ('io.socket:socket.io-client:1.0.0') {
-    // excluding org.json which is provided by Android
-    exclude group: 'org.json', module: 'json'
-  }
-  ```
+**build.gradle** 에 아래와 같이 추가한다.
+```
+compile ('io.socket:socket.io-client:1.0.0') {
+  // excluding org.json which is provided by Android
+  exclude group: 'org.json', module: 'json'
+}
+```
+
 ### Swift or Objective-C
   - socket.io 1.x
   - [https://github.com/socketio/socket.io-client-swift](ÂΩ)
