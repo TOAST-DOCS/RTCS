@@ -220,6 +220,7 @@ POST /v2/auth/{appkey}/access
 |401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
 |413| 에러 |Request Entity Too Large | 메시지 크기가 지정된 크기보다 더 큰 경우 발생한다.|
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+|503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 
 ### 채널 메시지 전달 요청
@@ -282,6 +283,7 @@ POST /v2/event/{appkey}/channel
 |401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
 |413| 에러 |Request Entity Too Large | 메시지 크기가 지정된 크기보다 더 큰 경우 발생한다.|
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+|503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ### 채널 존재 여부 확인
 채널이 존재 하는지 확인 한다.
@@ -316,6 +318,7 @@ GET /exists/{appkey}
 |400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
 |401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+|503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ### 채널에 가입된 세션 정보 조회
 채널에 가입된 세션의 목록을 조회한다. 조회가 가능한 채널은 **presence** 와 **member** 채널이다.
@@ -357,6 +360,7 @@ GET /v2/channel/{appkey}/sessions?channel={channel_name}
 |400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
 |401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+|503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ### 채널에 가입된 세션 개수 조회
 채널에 가입된 세션의 갯수를 조회한다. 조회가 가능한 채널은 **presence** 와 **member** 채널이다.
@@ -392,6 +396,7 @@ GET /v2/channel/{appkey}/count?channel={channel_name}
 |400| 에러 |Bad Request | 잘못된 요청일 경우 발생한다.|
 |401| 에러 |Unauthorized | 인증 실패일 경우 발생한다.|
 |500| 에러 |Server Error | 서버가 점검 중이거나 장애인 경우 발생한다.|
+|503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ## Client
 
