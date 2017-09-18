@@ -1,42 +1,42 @@
 ## Upcoming Products > RTCS > Developer's Guide
-RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명한다.
+RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명합니다
 
 ## 채널
-메세지를 수신하기 위한 기본 단위이다. 같은 채널에 가입되어있는 클라이언트들과 메세지를 공유한다. 클라이언트 별로 다른 메세지를 전달해야한다면 전용 채널을 생성하면 된다. 기본적으로 메세지를 받으려면 RTCS와 연결이 완료된 후 채널에 가입을 진행해야한다. 채널의 종류는 아래와 같다.µ
+메세지를 수신하기 위한 기본 단위입니다. 같은 채널에 가입되어있는 클라이언트들과 메세지를 공유할 수 있습니다.. 클라이언트 별로 다른 메세지를 전달해야한다면 전용 채널을 생성하면 됩니다. 기본적으로 메세지를 받으려면 RTCS와 연결이 완료된 후 채널에 가입을 진행합니다. 채널의 종류는 아래와 같습니다.
 
 ### 채널 명규칙
-채널 명은 RTCS내부에서 사용하는 prefix 채널과 사용자가 임의로 만들어서 사용하는 공개 채널이 있다. 채널명을 작성할 때는 아래의 조건에 맞아야한다.
+채널 명은 RTCS내부에서 사용하는 prefix 채널과 사용자가 임의로 만들어서 사용하는 공개 채널이 있습니다. 채널명을 작성할 때는 아래의 조건에 맞아야합니다
 * **영문**, **숫자**, **_** 와  **-** 만 허용한다.
 * **200 byte**의 길이만 허용한다.
 * **private_**, **presence_**, **member_** 로 시작하는 공개 채널은 생성할 수 없다.
 
-채널의 종류는 아래와 같다.
+채널의 종류는 아래와 같습니다.
 
 ### 공개 채널
-인증과정이 없어 누구나 가입이 가능한다. **private_**, **presence_**, **member_** 로 시작하는 채널명은 만들 수 없다.
+인증과정이 없어 누구나 가입이 가능합니다. **private_**, **presence_**, **member_** 로 시작하는 채널명은 만들 수 없습니다.
 
 ### 비공개 채널
-가입을 위해서는 연결 URL을 요청할때 선 가입을 시켜주거나, 추후 가입시에 인증이 필요하다. 채널명은 **private_** 로 시작한다.
+가입을 위해서는 연결 URL을 요청할때 선 가입을 시켜주거나, 추후 가입시에 인증이 필요합니다. 채널명은 **private_** 로 시작합니다.
 
 ### 멤버 채널
-가입을 위해서는 연결 URL을 요청할때 선 가입을 시켜주거나, 추후 가입시에 인증이 필요하다. 채널명은 **member_** 로 시작한다. 가입자를 아래와 같은 내용으로 조회가 가능하다
+가입을 위해서는 연결 URL을 요청할때 선 가입을 시켜주거나, 추후 가입시에 인증이 필요합니다. 채널명은 **member_** 로 시작합니다. 가입자를 아래와 같은 내용으로 조회가 가능합니다.
 ```
 {세션아이디:사용자정보}
 ```
 
 ### 출석 채널
-가입을 위해서는 연결 URL을 요청할때 선 가입을 시켜주거나, 추후 가입시에 인증이 필요하다. 채널명은 **presence_** 로 시작한다. 채널에 가입과 탈퇴하는 회원의 정보를 채널 가입들에게 broadcast를 해준다. 가입자 정보를 아래와 같은 내용으로 조회가 가능한다.
+가입을 위해서는 연결 URL을 요청할때 선 가입을 시켜주거나, 추후 가입시에 인증이 필요합니다. 채널명은 **presence_** 로 시작합니다. 채널에 가입과 탈퇴하는 회원의 정보를 채널 가입들에게 broadcast를 해줍니다. 가입자 정보를 아래와 같은 내용으로 조회가 가능합니다.
 ```
 {세션아이디:사용자정보}
 ```
 
 ## 인증
-Webauth를 이용하여 채널 가입시에 인증 기능을 추가 할 수 있다. 채널 가입시  **private_**, **presence_** 와 **member_** 채널은 인증을 거쳐야한다. Connection URL을 받을 때 가입 허용을 미리 지정하지 않았다면 추후 채널 가입시에 Webauth를 통해 인증 여부를 문의 한다.
+Webauth를 이용하여 채널 가입시에 인증 기능을 추가 할 수 있습니다.. 채널 가입시  **private_**, **presence_** 와 **member_** 채널은 인증을 거쳐야합니다. Connection URL을 받을 때 가입 허용을 미리 지정하지 않았다면 추후 채널 가입시에 Webauth를 통해 인증 여부를 문의 합니다.
 
 ### WebAuth 세팅
 
 ### 요청
-WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 json형태로 전달된다. 응답코드 **200**이면 인증성공이다. 지정된 타임아웃은 **1,000ms** 이고 전송 성공/실패에 관계없이 재 요청하지 않는다.
+WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 json형태로 전달됩니다. 응답코드 **200**이면 인증성공이다. 지정된 타임아웃은 **1,000ms** 이고 전송 성공/실패에 관계없이 재 요청하지 않습니다.
 
 [Body]
 ```
@@ -58,10 +58,10 @@ WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 j
 
 
 ## Webhook
-클라이언트에서 밣생하는 이벤트를 서비스 서버로 전달할때 사용한다. Http의 post로 요청이 전달되고 body는 Json형태 이다. Hook은 기본 시간 동안(**1,000ms**) 전송 시도 후 성공/실패에 상관없이 완료되며, 실패 하더라도 재전송 되지 않는다.
+클라이언트에서 밣생하는 이벤트를 서비스 서버로 전달할때 사용합니다. Http의 post로 요청이 전달되고 body는 Json형태 이다. Hook은 기본 시간 동안(**1,000ms**) 전송 시도 후 성공/실패에 상관없이 완료되며, 실패 하더라도 재전송 되지 않습니다.
 
 ### 클라이언트 접속
-클라이언트가 접속 했을 때 Hook이 발생한다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. **user** 데이터는 접속 URL을 요청했을 때 전달해준 서비스 서버의 user 데이터이다.
+클라이언트가 접속 했을 때 Hook이 발생합니다. 지정한 Hook URL로 아래와 같은 데이터가 전송됩니다. **user** 데이터는 접속 URL을 요청했을 때 전달해준 서비스 서버의 user 데이터입니다.
 
 ```
 {
@@ -85,7 +85,7 @@ WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 j
 |session|String|접속한 클라이언트의 Session ID|
 
 ### 클라이언트 종료
-클라이언트가 종료 했을 때 Hook이 발생한다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. **user** 키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터이다.
+클라이언트가 종료 했을 때 Hook이 발생합니다. 지정한 Hook URL로 아래와 같은 데이터가 전송됩니다. **user** 키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터입니다.
 ```
 {
     "time" : "milliseconds",
@@ -109,7 +109,7 @@ WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 j
 
 
 ### 채널 가입
-클라이언트에서 채널을 가입했을 때 Hook이 발생된다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. **user** 키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터이다.
+클라이언트에서 채널을 가입했을 때 Hook이 발생됩니다. 지정한 Hook URL로 아래와 같은 데이터가 전송됩니다. **user** 키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터입니다.
 ```
 {
     "time" : "1352770998419",
@@ -133,7 +133,7 @@ WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 j
 |channel_name|String|가입 한 채널명|
 
 ### 채널 탈퇴
-클라이언트에서 채널을 탈퇴했을 때 Hook이 발생된다. 지정한 Hook URL로 아래와 같은 데이터가 전송된다. **user** 키에 데이터는 접속 URL을 요청했을 때 전달해준 user 데이터이다.
+클라이언트에서 채널을 탈퇴했을 때 Hook이 발생됩니다. 지정한 Hook URL로 아래와 같은 데이터가 전송됩니다. **user** 키에 데이터는 접속 URL을 요청했을 때 전달해준 user 전송됩니다.
 ```
 {
     "time" : "1352770998419",
@@ -157,14 +157,14 @@ WebAuth는 서비스 서버에 http **POST** 요청으로 전달되며 Body는 j
 |channel_name|String|가입 탈퇴 채널명|
 
 ## Service API  
-RTCS에서 제공하는 Rest API에 대한 설명이다. API종류는 접속 권한 요청, 채널 메시지 전달 요청, 채널 존재 여부 확인 등의 기능을 제공한다. 기본 API URL은 아래와 같다.
+RTCS에서 제공하는 Rest API에 대한 설명입니다. API종류는 접속 권한 요청, 채널 메시지 전달 요청, 채널 존재 여부 확인 등의 기능을 제공합니다. 기본 API URL은 아래와 같습니다.
 
 |기본 도메인|
 |---|
 |https://api-gw.cloud.toast.com/tc-pusher/|
 
 ### 접속 권한 요청
-RTCS에 접속하기 위한 접속 권한을 요청한다. 제공 받은 URL을 이용하여 클라이언트에서 접속하면된다.
+RTCS에 접속하기 위한 접속 권한을 요청합니다. 제공 받은 URL을 이용하여 클라이언트에서 접속하면 됩니다..
 
 [URL]
 
@@ -224,11 +224,11 @@ POST /v2/auth/{appkey}/access
 
 
 ### 채널 메시지 전달 요청
-채널에 가입된 클라이언트 들에게 메세지를 전달한다.
+채널에 가입된 클라이언트 들에게 메세지를 전달 할 수 있습니다.
 * 주의)
-  * 메세지의 크기는 **1mb** 보다 작아야한다.
-  * 큰메세지를 보낼 경우 **413** 에러가 발생한다.
-* 메세지 크기만 잘 조절하면 base64를 이용해 바이너리도 전달 가능  
+  * 메세지의 크기는 **1mb** 보다 작아야합니다.
+  * 큰메세지를 보낼 경우 **413** 에러가 발생합니다..
+* 메세지 크기만 잘 조절하면 base64를 이용해 바이너리도 전달 가능 합니다.
 
 [URL]
 
@@ -286,7 +286,7 @@ POST /v2/event/{appkey}/channel
 |503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ### 채널 존재 여부 확인
-채널이 존재 하는지 확인 한다.
+채널이 존재 하는지 확인 할 수 있습니다.
 
 [URL]
 
@@ -321,7 +321,7 @@ GET /exists/{appkey}
 |503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ### 채널에 가입된 세션 정보 조회
-채널에 가입된 세션의 목록을 조회한다. 조회가 가능한 채널은 **presence** 와 **member** 채널이다.
+채널에 가입된 세션의 목록을 조회 할 수 있습니다. 조회가 가능한 채널은 **presence** 와 **member** 채널입니다.
 
 [URL]
 
@@ -363,7 +363,7 @@ GET /v2/channel/{appkey}/sessions?channel={channel_name}
 |503| 에러 |Server Maintenance | 서버가 점검 중인 경우 발생한다.|
 
 ### 채널에 가입된 세션 개수 조회
-채널에 가입된 세션의 갯수를 조회한다. 조회가 가능한 채널은 **presence** 와 **member** 채널이다.
+채널에 가입된 세션의 갯수를 조회 할 수 있습니다.. 조회가 가능한 채널은 **presence** 와 **member** 채널입니다.
 
 [URL]
 
@@ -400,7 +400,7 @@ GET /v2/channel/{appkey}/count?channel={channel_name}
 
 ## Client
 
-클라이언트는 Javascript는 socket.io 0.9 기반, 나머지 native client들은 아래 socket.io 1.x버젼용 client library를 사용하면된다.
+클라이언트는 Javascript는 socket.io 0.9 기반, 나머지 native client들은 아래 socket.io 1.x버젼용 client library를 사용면 됩니다.
 
 
 ### Javascript
@@ -411,7 +411,7 @@ GET /v2/channel/{appkey}/count?channel={channel_name}
   - socket.io 1.x
 
 #### Maven
-**pom.xml** 에 아래와 같이 추가한다.
+**pom.xml** 에 아래와 같이 추가합니다.
 ```
 <dependencies>
   <dependency>
@@ -423,7 +423,7 @@ GET /v2/channel/{appkey}/count?channel={channel_name}
 ```
 
 #### Gradle
-**build.gradle** 에 아래와 같이 추가한다.
+**build.gradle** 에 아래와 같이 추가합니다.
 ```
 compile ('io.socket:socket.io-client:1.0.0') {
   // excluding org.json which is provided by Android
@@ -436,7 +436,7 @@ compile ('io.socket:socket.io-client:1.0.0') {
   - [https://github.com/socketio/socket.io-client-swift](ÂΩ)
 
 #### Swift Package Manager
-**Package.swift** 에 아래 디펜던시를 추가한다
+**Package.swift** 에 아래 디펜던시를 추가합니다
 ```
 import PackageDescription
 
@@ -449,7 +449,7 @@ let package = Package(
 ```
 
 ### Carthage
-**Cartfile** 에 아래와 같이 추가한다.
+**Cartfile** 에 아래와 같이 추가합니다.
 ```
 github "nuclearace/Starscream" ~> 8.0.4
 github "socketio/socket.io-client-swift" ~> 11.1.1 # Or latest version
@@ -463,7 +463,7 @@ carthage update --platform ios,macosx
   - Cocoapod
   - [https://cocoapods.org/pods/Socket.IO-Client-Swift](https://cocoapods.org/pods/Socket.IO-Client-Swift)
 
-프로젝트에서 **Podfile** 파일을 생성하고 **Socket.IO-Client-Swift** 를 추가한다.
+프로젝트에서 **Podfile** 파일을 생성하고 **Socket.IO-Client-Swift** 를 추가합니다.
 ```
   use_frameworks!
 
