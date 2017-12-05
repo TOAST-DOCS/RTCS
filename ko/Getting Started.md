@@ -8,7 +8,7 @@
 ![setting](http://static.toastoven.net/prod_rtcs/setting.png)
 ### 서비스 설정에 필요한 자료
 - SSL 사용 여부 : https, wss 를 사용해야할 때 체크
-- WebAuth URL : 서비스에서 연결 인증을 하기 위한 URL http, https
+- WebAuth URL : 채널 가입시에 서비스 서버에 인증 확인을 요청하는 URL. Web Auth는 HTTP/HTTPS POST 요청으로 전달되고, 내용(body)는 JSON 형태이다.
 - Hook URL : 아래 이벤트에 대한 hook을 받고 싶을 때 체크
 - 전달 받을 hook event
   - 연결 완료 : 클라이언트가 접속을 하면 전달됨
