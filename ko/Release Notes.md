@@ -1,4 +1,6 @@
 ## Upcoming Products > RTCS > Release Notes
+### 2017.12.21
+* 통계 그래프 버그 수정
 
 ### 2017.09.21
 #### 신규 상품 출시
