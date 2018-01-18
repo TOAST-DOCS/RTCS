@@ -33,4 +33,4 @@
   - 채널 가입 : 채널에 가입을 하면 전달 됨
   - 채널 탈퇴 : 채널에 탈퇴를 하면 전달 됨
 
-![setting](http://static.toastoven.net/prod_rtcs/setting.png)
+![setting](http://static.toastoven.net/prod_rtcs/n-setting.png)
