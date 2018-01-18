@@ -1,4 +1,5 @@
-## Upcoming Products > RTCS > Getting Started
+## Application Service > RTCS > 콘솔 사용 가이드
+
 ## 서비스 신청 방법
 * 서비스 활성 버튼을 클릭하면 위와 같은 화면이 나옵니다.
 * 서비스 활성화 한뒤 Setting 화면에서 프로젝트를 설정을 할 수 있습니다..

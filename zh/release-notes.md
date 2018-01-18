@@ -1,4 +1,5 @@
-## Upcoming Products > RTCS > Release Notes
+Application Service > RTCS > 릴리스 노트
+
 ### 2017.12.21
 * 통계 그래프 버그 수정
 
