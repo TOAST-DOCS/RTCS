@@ -435,7 +435,7 @@ compile ('io.socket:socket.io-client:1.0.0') {
 
 ### Swift or Objective-C
   - socket.io 1.x
-  - [https://github.com/socketio/socket.io-client-swift](ÂΩ)
+  - [https://github.com/socketio/socket.io-client-swift](https://github.com/socketio/socket.io-client-swift)
 
 #### Swift Package Manager
 **Package.swift** 에 아래 디펜던시를 추가합니다
