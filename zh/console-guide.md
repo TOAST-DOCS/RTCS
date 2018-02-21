@@ -1,4 +1,4 @@
-## Application Service > RTCS > 콘솔 사용 가이드
+## Application Service > RTCS > Console Guide
 
 ## 서비스 신청 방법
 * 서비스 활성 버튼을 클릭하면 위와 같은 화면이 나옵니다.

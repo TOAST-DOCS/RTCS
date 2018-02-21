@@ -1,4 +1,4 @@
-## Application Service > RTCS > 오류 코드
+## Application Service > RTCS > Error Code
 ### 접속 권한 요청
 RTCS에 접속하기 위한 접속 권한을 요청합니다. 제공 받은 URL을 이용하여 클라이언트에서 접속하면 됩니다..
 

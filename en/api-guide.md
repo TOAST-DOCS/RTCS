@@ -1,4 +1,4 @@
-## Application Service > RTCS > API 가이드
+## Application Service > RTCS > API Guide
 
 RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명합니다
 
