@@ -1,4 +1,6 @@
 Application Service > RTCS > Release Notes
+### 2018.02.22
+* 신규 토스트 콘솔 오픈
 
 ### 2017.12.21
 * 통계 그래프 버그 수정
