@@ -1,6 +1,25 @@
 ## Application Service > RTCS > API 가이드
 
 RTCS를 사용하기 위해 필요한 기본 지식과 API에 대해 설명합니다
+## 공통
+* API를 활용하려면 아래와 같은 기본 정보가 있어야한다.
+  * API 기본 URL : https://rtcs.api.nhncloudservice.com/
+  * appkey : 토스트 클라우드의 **appkey**. 파라메터로 사용
+  * x-nhn-apikey : api를 활용하기 위한 보안키 Primary와 Secondary키 중 하나를 사용하면 됨, http header로 사용
+* 예)
+```
+$ curl --location \
+  --request POST 'https://rtcs.api.nhncloudservice.com/v2/auth/{appkey}/access' \
+  --header 'x-nhn-apikey: {Primary or Secondary api key}' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+   "user": "test",
+   "channels":[
+      "channel_name"
+   ],
+   "via":"sample"
+}'
+```
 
 ## 채널
 메세지를 수신하기 위한 기본 단위입니다. 같은 채널에 가입되어있는 클라이언트들과 메세지를 공유할 수 있습니다.. 클라이언트 별로 다른 메세지를 전달해야한다면 전용 채널을 생성하면 됩니다. 기본적으로 메세지를 받으려면 RTCS와 연결이 완료된 후 채널에 가입을 진행합니다. 채널의 종류는 아래와 같습니다.
